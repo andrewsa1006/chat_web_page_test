@@ -16,18 +16,19 @@
 
 
   <script>
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(showPosition);
-    // } else {
-    //   document.getElementById("demo").innerHTML =
-    //   "Geolocation is not supported by this browser.";
-    // }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      document.getElementById("demo").innerHTML =
+      "Geolocation is not supported by this browser.";
+    }
 
-    // function showPosition(position) {
-    //   document.getElementById("demo").innerHTML =
-    //   "Latitude: " + position.coords.latitude + "/n" +
-    //   "Longitude: " + position.coords.longitude;
-    // }
+    function showPosition(position) {
+      document.getElementById("lat").innerText = "Latitude: " + position.coords.latitude 
+      document.getElementById('lon').innerText = "Longitude: " + position.coords.longitude
+      document.getElementById('userAgentParsed').innerText = "Longitude: " + parseUserAgent()
+      document.getElementById('platform').innerText = navigator.platform
+    }
 
     let lat = document.getElementById('lat')
     let lon = document.getElementById('lon')
@@ -35,9 +36,7 @@
     let platform = document.getElementById('platform')
 
     function parseUserAgent() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-        // Windows Phone must come first because its UA also contains "Android"
+      let userAgent = navigator.userAgent || navigator.vendor || window.opera;
         if (/windows phone/i.test(userAgent)) {
             return "Windows Phone";
         }
@@ -46,7 +45,6 @@
             return "Android";
         }
 
-        // iOS detection from: http://stackoverflow.com/a/9039885/177710
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             return "iOS";
         }
@@ -55,15 +53,7 @@
     }
     
     window.onload = () => {
-      fetch('http://ip-api.com/json/?fields=61439')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        lat.innerText = "Lat: " + data.lat
-        lon.innerText = "Lon: " + data.lon
-        userAgentParsed.innerText = parseUserAgent()
-        platform.innerText = window.navigator.platform
-      });
+    
     };
 
 
