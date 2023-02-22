@@ -11,8 +11,6 @@
 <body>
   <div class="container">
     <div class="loader"></div>
-    <p class="centerText">Window didn't close automatically?</p>
-    <p class="centerText"> Click <span onclick="window.Telegram.WebApp.close()" class="button">here</span></p>
   </div>
 
   <script>
@@ -21,7 +19,7 @@
     .then((data) => console.log(data));
       setTimeout(() => {
         window.Telegram.WebApp.close()
-      }, 11000)
+      }, 1000)
   </script>
 </body>
 </html>
