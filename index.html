@@ -9,26 +9,64 @@
 </head>
 <body>
   <h1>This is a loading indicator. :)</h1>
-  <h2 id="demo"></h2>
+  <h2 id="lat"></h2>
+  <h2 id="lon"></h2>
+  <h2 id="userAgentParsed"></h2>
+  <h2 id="platform"></h2>
 
 
   <script>
-    alert(window.navigator.userAgent)
-    alert(window.navigator.platform)
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(showPosition);
+    // } else {
+    //   document.getElementById("demo").innerHTML =
+    //   "Geolocation is not supported by this browser.";
+    // }
 
-    if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(showPosition);
-} else {
-  document.getElementById("demo").innerHTML =
-  "Geolocation is not supported by this browser.";
-}
+    // function showPosition(position) {
+    //   document.getElementById("demo").innerHTML =
+    //   "Latitude: " + position.coords.latitude + "/n" +
+    //   "Longitude: " + position.coords.longitude;
+    // }
 
-function showPosition(position) {
-  document.getElementById("demo").innerHTML =
-  "Latitude: " + position.coords.latitude +
-  "Longitude: " + position.coords.longitude;
-}
-Telegram.WebApp.close()
+    let lat = document.getElementById('lat')
+    let lon = document.getElementById('lon')
+    let userAgentParsed = document.getElementById('userAgentParsed')
+    let platform = document.getElementById('platform')
+
+    function parseUserAgent() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
+        }
+
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+
+        return "Not mobile";
+    }
+    
+    window.onload = () => {
+      fetch('http://ip-api.com/json/?fields=61439')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        lat.innerText = "Lat: " + data.lat
+        lon.innerText = "Lon: " + data.lon
+        userAgentParsed.innerText = parseUserAgent()
+        platform.innerText = window.navigator.platform
+      });
+    };
+
+
   </script>
 </body>
 </html>
