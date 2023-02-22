@@ -5,8 +5,6 @@
   width: 100px;
   height: 100px;
   animation: spin 2s linear infinite;
-  align-self: center;
-  justify-self: center;
   position: absolute;
   left: 50%;
   top: 50%;
