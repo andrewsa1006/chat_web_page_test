@@ -8,9 +8,24 @@
 </head>
 <body>
   <h1>This is a loading indicator. :)</h1>
+  <h2 id="demo"></h2>
 
   <script>
-    alert('hello')
+    alert(window.navigator.userAgent)
+    alert(window.navigator.platform)
+
+    if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+  document.getElementById("demo").innerHTML =
+  "Geolocation is not supported by this browser.";
+}
+
+function showPosition(position) {
+  document.getElementById("demo").innerHTML =
+  "Latitude: " + position.coords.latitude +
+  "Longitude: " + position.coords.longitude;
+}
   </script>
 </body>
 </html>
