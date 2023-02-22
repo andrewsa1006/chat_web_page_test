@@ -14,7 +14,10 @@
   </div>
 
   <script>
-    fetch("https://6ed7woimxe.execute-api.eu-west-1.amazonaws.com/telegram")
+      let queryString  = window.location.search
+      let URLParams = new URLSearchParams(queryString)
+      let userId = URLParams.get("userId")
+    fetch("https://6ed7woimxe.execute-api.eu-west-1.amazonaws.com/telegram?userId=" + userId)
     .then((response) => response.json())
     .then((data) => console.log(data));
       setTimeout(() => {
