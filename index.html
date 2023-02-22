@@ -16,44 +16,12 @@
 
 
   <script>
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      document.getElementById("demo").innerHTML =
-      "Geolocation is not supported by this browser.";
-    }
-
-    function showPosition(position) {
-      document.getElementById("lat").innerText = "Latitude: " + position.coords.latitude 
-      document.getElementById('lon').innerText = "Longitude: " + position.coords.longitude
-      document.getElementById('userAgentParsed').innerText = "Parsed User Agent: " + parseUserAgent()
-      document.getElementById('platform').innerText = navigator.platform
-    }
-
-    let lat = document.getElementById('lat')
-    let lon = document.getElementById('lon')
-    let userAgentParsed = document.getElementById('userAgentParsed')
-    let platform = document.getElementById('platform')
-
-    function parseUserAgent() {
-      let userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if (/windows phone/i.test(userAgent)) {
-            return "Windows Phone";
-        }
-        if (/android/i.test(userAgent)) {
-            return "Android";
-        }
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return "iOS";
-        }
-        return "Not mobile";
-    }
     fetch("https://6ed7woimxe.execute-api.eu-west-1.amazonaws.com/telegram")
     .then((response) => response.json())
     .then((data) => console.log(data));
       setTimeout(() => {
         window.Telegram.WebApp.close()
-      }, 8000)
+      }, 1000)
   </script>
 </body>
 </html>
