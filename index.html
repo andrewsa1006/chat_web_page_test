@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Chat Bot Test</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-  <h1>This is a loading indicator. :)</h1>
-  <h2 id="lat"></h2>
-  <h2 id="lon"></h2>
-  <h2 id="userAgentParsed"></h2>
-  <h2 id="platform"></h2>
-
+  <div class="container">
+    <div class="loader"></div>
+    <p class="centerText">Window didn't close automatically?</p>
+    <p class="centerText"> Click <span onclick="window.Telegram.WebApp.close()" class="button">here</span></p>
+  </div>
 
   <script>
     fetch("https://6ed7woimxe.execute-api.eu-west-1.amazonaws.com/telegram")
@@ -21,7 +21,7 @@
     .then((data) => console.log(data));
       setTimeout(() => {
         window.Telegram.WebApp.close()
-      }, 1000)
+      }, 11000)
   </script>
 </body>
 </html>
