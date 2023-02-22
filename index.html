@@ -5,10 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Bot Test</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <h1>This is a loading indicator. :)</h1>
   <h2 id="demo"></h2>
+
 
   <script>
     alert(window.navigator.userAgent)
@@ -26,6 +28,7 @@ function showPosition(position) {
   "Latitude: " + position.coords.latitude +
   "Longitude: " + position.coords.longitude;
 }
+Telegram.WebApp.close()
   </script>
 </body>
 </html>
