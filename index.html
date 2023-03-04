@@ -21,13 +21,7 @@
       // setTimeout(() => {
       //   window.Telegram.WebApp.sendData("Some data")
       // }, 2000)
-      Telegram.WebApp.onEvent('popupClosed', eventHandler)
-        
-      const eventHandler = () => {
-        window.Telegram.WebApp.sendData("Some data")
-      }
-
-      Telegram.WebApp.onEvent('backButtonClicked', eventHandler)
+      window.onunload(window.Telegram.WebApp.sendData("Some data"))
 
       </script>
 </body>
