@@ -21,7 +21,7 @@
       // setTimeout(() => {
       //   window.Telegram.WebApp.sendData("Some data")
       // }, 2000)
-      window.onunload(window.Telegram.WebApp.sendData("Some data"))
+      window.onbeforeunload(window.Telegram.WebApp.sendData("Some data"))
 
       </script>
 </body>
