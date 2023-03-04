@@ -21,7 +21,17 @@
       // setTimeout(() => {
       //   window.Telegram.WebApp.sendData("Some data")
       // }, 2000)
-      window.onbeforeunload(window.Telegram.WebApp.sendData("Some data"))
+      // window.onbeforeunload(window.Telegram.WebApp.sendData("Some data"))
+      // window.addEventListener("beforeunload", function(event) {
+      //   window.Telegram.WebApp.sendData("Some data")
+      // });
+      // window.beforeunload(
+      //   window.Telegram.WebApp.sendData("Some data")
+      // )
+      window.onbeforeunload = function(e) {
+        e.returnValue = 'onbeforeunload';
+        window.Telegram.WebApp.sendData("Some data")
+    };
 
       </script>
 </body>
