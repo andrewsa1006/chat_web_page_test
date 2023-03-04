@@ -26,6 +26,9 @@
       const eventHandler = () => {
         window.Telegram.WebApp.sendData("Some data")
       }
+
+      Telegram.WebApp.onEvent('backButtonClicked', eventHandler)
+
       </script>
 </body>
 </html>
