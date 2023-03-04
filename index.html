@@ -17,6 +17,12 @@
       let queryString  = window.location.search
       let URLParams = new URLSearchParams(queryString)
       let userId = URLParams.get("userId")
-  </script>
+      // window.Telegram.WebApp.expand()
+      // setTimeout(() => {
+      //   window.Telegram.WebApp.sendData("Some data")
+      // }, 2000)
+      window.onbeforeunload(window.Telegram.WebApp.sendData("Some data"))
+
+      </script>
 </body>
 </html>
